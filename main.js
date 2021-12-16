@@ -209,26 +209,10 @@ var Gallery = {
 
 
   create: function () {
-    Gallery.axesHelper = new THREE.AxesHelper( 3 );
-    Gallery.scene.add( Gallery.axesHelper );
 
     //let there be light!
     Gallery.worldLight = new THREE.AmbientLight(0xffffff, 0.5);
     Gallery.scene.add(Gallery.worldLight);
-
-    // Gallery.spotLight = new THREE.SpotLight( 0xffffff , 0.7);
-    // Gallery.spotLight.angle = 0.25;
-    // Gallery.spotLight.penumbra = 0.5;
-    // Gallery.spotLight.position.set( 0, 5, -2 );
-    // Gallery.spotLight.target.position.set(0, -1, 8);
-    // Gallery.scene.add( Gallery.spotLight, Gallery.spotLight.target );
-
-    // Gallery.spotLightHelper = new THREE.SpotLightHelper( Gallery.spotLight);
-    // Gallery.scene.add( Gallery.spotLightHelper);
-
-    // Gallery.pointLight = new THREE.PointLight( 0xffffff , 0.3);
-    // Gallery.pointLight.position.set( 0, 2, 1 );
-    // Gallery.scene.add( Gallery.pointLight );
 
     Gallery.textureLoader.load('./asset/floor-pattern.jpg', function (texture) {
         texture.wrapS = THREE.RepeatWrapping;
