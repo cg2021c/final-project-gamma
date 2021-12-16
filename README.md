@@ -25,3 +25,5 @@ Here is the documentation for our final project :
 - S - Move Backward
 - D - Move Right
 - Space - Jump
+
+https://cg2021c.github.io/final-project-gamma/
