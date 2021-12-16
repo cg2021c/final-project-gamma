@@ -20,8 +20,8 @@ Here is the documentation for our final project :
 
 ## Keybind
 
-W - Move Forward
-A - Move Left
-S - Move Backward
-D - Move Right
-Space - Jump
+- W - Move Forward
+- A - Move Left
+- S - Move Backward
+- D - Move Right
+- Space - Jump
