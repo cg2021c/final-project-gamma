@@ -5,6 +5,7 @@ var Gallery = {
   raycaster: new THREE.Raycaster(),
   mouse: new THREE.Vector3(),
   textureLoader: new THREE.TextureLoader(),
+     
   raycastSetUp: function () {
     Gallery.mouse.x = 0; //(0.5) * 2 - 1;
     Gallery.mouse.y = 0; //(0.5) * 2 + 1;
@@ -212,16 +213,29 @@ var Gallery = {
     Gallery.scene.add( Gallery.axesHelper );
 
     //let there be light!
-    Gallery.worldLight = new THREE.AmbientLight(0xffffff, 0.8);
+    Gallery.worldLight = new THREE.AmbientLight(0xffffff, 0.5);
     Gallery.scene.add(Gallery.worldLight);
 
-    
+    // Gallery.spotLight = new THREE.SpotLight( 0xffffff , 0.7);
+    // Gallery.spotLight.angle = 0.25;
+    // Gallery.spotLight.penumbra = 0.5;
+    // Gallery.spotLight.position.set( 0, 5, -2 );
+    // Gallery.spotLight.target.position.set(0, -1, 8);
+    // Gallery.scene.add( Gallery.spotLight, Gallery.spotLight.target );
+
+    // Gallery.spotLightHelper = new THREE.SpotLightHelper( Gallery.spotLight);
+    // Gallery.scene.add( Gallery.spotLightHelper);
+
+    // Gallery.pointLight = new THREE.PointLight( 0xffffff , 0.3);
+    // Gallery.pointLight.position.set( 0, 2, 1 );
+    // Gallery.scene.add( Gallery.pointLight );
 
     Gallery.textureLoader.load('./asset/floor-pattern.jpg', function (texture) {
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(24, 24);
 
+        texture.magFilter = THREE.NearestFilter;
         Gallery.floorMaterial = new THREE.MeshPhongMaterial({ map: texture });
         Gallery.floor = new THREE.Mesh(new THREE.PlaneGeometry(45, 45), Gallery.floorMaterial);
 
@@ -284,7 +298,7 @@ var Gallery = {
 
         Gallery.wall2 = new THREE.Mesh(new THREE.BoxGeometry(6, 6, 0.001), Gallery.wallMaterial);
         Gallery.wall3 = new THREE.Mesh(new THREE.BoxGeometry(6, 6, 0.001), Gallery.wallMaterial);
-
+        
         Gallery.wallGroup.add(Gallery.wall1, Gallery.wall2, Gallery.wall3, Gallery.wall4);
         Gallery.wallGroup.position.y = 3;
 
@@ -302,7 +316,7 @@ var Gallery = {
       function (err) { console.error(err); }
   	);
 
-	  Gallery.textureLoader.load('./asset/ceil.jpg',
+	  Gallery.textureLoader.load('./asset/Smooth-ceiling.jpg',
       function (texture) {
           texture.wrapS = THREE.RepeatWrapping;
           texture.wrapT = THREE.RepeatWrapping;
@@ -321,6 +335,43 @@ var Gallery = {
 	  );
 
 	  Gallery.artGroup = new THREE.Group();
+    // Gallery.pictureFrame = new THREE.ObjectLoader();
+    // Gallery.pictureFrame.load(
+    //   'asset/metallic-lucy-statue-stanford-scan.json',
+    //   function (object){
+    //     Gallery.scene.add(object);
+    //   },
+    // );
+    // Gallery.pictureFrame.position.set(0,1,0);
+
+    // Gallery.objectLoader = new THREE.ObjectLoader();
+    // Gallery.objectLoader.load("asset/metallic-lucy-statue-stanford-scan.json", function ( obj ) {
+    // Gallery.scene.add( obj );
+    // } );
+
+    // Gallery.loader = new THREE.OBJLoader();
+    // Gallery.obj3D = new THREE.Object3D();
+
+    // Gallery.loader.load(
+    //   "asset/metallic-lucy-statue-stanford-scan.json",
+    //   function (obj) {
+    //     Gallery.obj3D = obj;
+    //     Gallery.console.log(Gallery.obj3D);
+    //     Gallery.scene.add(Gallery.obj3D);
+    //   }
+    // );
+
+    // const loader = new GLTFLoader();
+    // let obj, obj2, obj3;
+
+    // loader.load("asset/scene.gltf", function (gltf) {
+    //   obj = gltf.scene;
+    //   gltf.scene.scale.set(10.1, 15.08, 10.01);
+    //   Gallery.scene.add(gltf.scene);
+    //   obj.translateX(0.0).translateY(0.0).translateZ(-2.2);
+    //   obj.rotation.y -= Math.PI / 2;
+    //   obj.rotateOnAxis(new THREE.Vector3(0, 1, 0), Math.PI / 2);
+    // });
 
 	  Gallery.num_of_paintings = 30;
 	  Gallery.paintings = [];
