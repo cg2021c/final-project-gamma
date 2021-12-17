@@ -209,8 +209,8 @@ var Gallery = {
 
 
   create: function () {
-    Gallery.axesHelper = new THREE.AxesHelper( 3 );
-    Gallery.scene.add( Gallery.axesHelper );
+    // Gallery.axesHelper = new THREE.AxesHelper( 3 );
+    // Gallery.scene.add( Gallery.axesHelper );
 
     //let there be light!
     Gallery.worldLight = new THREE.AmbientLight(0xffffff, 0.5);
